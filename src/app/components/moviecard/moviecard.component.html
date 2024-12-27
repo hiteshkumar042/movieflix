@@ -1,7 +1,7 @@
 <div class="main-container">
-  @for (movie of movies(); track $index) {
-    <mat-card appearance="outlined">
-      <div class="card-container">
+  @for (movie of movies(); track movie.imdbID) {
+    <mat-card appearance="outlined" >
+      <div class=" card-container">
         <div class="left-section">
           <mat-card-title class="title">{{movie.Title}}</mat-card-title>
           <mat-card-footer class="example-card-footer">
@@ -12,12 +12,9 @@
           </mat-card-footer>
         </div>
         <div class="right-section">
-          <img height="200px" [src]="movie.Poster!='N/A'?movie.Poster:'../../../assets/not available.jpg'" alt="No Image Available"> 
+          <img (click)="movieClicked(movie.imdbID)" height="200px" [src]="movie.Poster!='N/A'?movie.Poster:'../../../assets/not available.jpg'" alt="No Image Available"> 
         </div>
-        
       </div>
-
-      
     </mat-card>
   }
 </div>

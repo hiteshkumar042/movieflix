@@ -1,0 +1,43 @@
+<div class="main-container">
+    <div class="left-section">
+        <img [src]="selectedMovie.Poster" alt="Movie Poster">
+    </div>
+    <div class="right-section">
+        <h1 class="title">{{selectedMovie.Title}} ({{selectedMovie.Year}})</h1>
+        <p>{{selectedMovie.Plot}}</p>
+        <p>language : {{selectedMovie.Language}}</p>
+        <p>Country : {{selectedMovie.Country}}</p>
+        <p>Actors : {{selectedMovie.Actors}}</p>
+        <p>Director : {{selectedMovie.Director}}</p>
+        <p>BoxOffice : {{selectedMovie.BoxOffice}}</p>
+        <p>Awards : {{selectedMovie.Awards}}</p>
+        <p>Rated : {{selectedMovie.Rated}}</p>
+        <p>Released : {{selectedMovie.Released}}</p>
+        <p>Runtime : {{selectedMovie.Runtime}}</p>
+        <p>Type : {{selectedMovie.Type}}</p>
+        <p>Writer : {{selectedMovie.Writer}}</p>
+        <p>IMDB Rating : {{selectedMovie.imdbRating}}</p>
+        <p>IMDB Votes : {{selectedMovie.imdbVotes}}</p>
+
+        @for (rating of selectedMovie.Ratings; track $index) {
+        <p>{{rating.Source}}: {{rating.Value}}</p>
+        }
+
+
+
+
+
+
+        <div class="chip-container">
+            @for (actor of this.selectedMovie.Actors.split(','); track $index) {
+            <div style="margin: 5px 5px 5px 0;">
+
+                <mat-chip>{{actor}}</mat-chip>
+            </div>
+            }
+        </div>
+
+
+    </div>
+
+</div>

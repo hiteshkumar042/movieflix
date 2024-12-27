@@ -1,15 +1,17 @@
-<app-header></app-header>
+<app-header [isHome]="showDetail()"
+(backtoHomeEmit)="sethome($event)"></app-header>
 
+@if (!showDetail()) {
 <div class="search-container">
     <mat-form-field class="search-bar" appearance="fill">
         <mat-label>Search</mat-label>
-        <input matInput type="text" class="searchTerm" (keyup)="searchMovie($event)" placeholder="What are you looking for?"/>
+        <input matInput type="text" class="searchTerm" (keyup)="searchMovie($event)"
+            placeholder="What are you looking for?" />
     </mat-form-field>
 </div>
-
 <main>
     @if (MovieList().length) {
-    <app-moviecard [movies]="MovieList()"></app-moviecard>
+    <app-moviecard [movies]="MovieList()" (movieEmit)="getMovieDetails($event)"></app-moviecard>
     }
     @else {
     <div class="no-movie">
@@ -17,4 +19,9 @@
         <p>Go ahead, search for the movie details...</p>
     </div>
     }
-</main>
+
+</main>}
+
+@if (showDetail()) {
+<app-moviedetails [selectedMovie]="MovieDetailData()"></app-moviedetails>
+}
